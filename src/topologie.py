@@ -9,7 +9,6 @@ class Lien:
         eq2 : deuxième équipement (objet Equipement)
         bande_passante : capacité en Mbps
         latence : délai en ms
-    """
 
     def __init__(self, eq1, eq2, bande_passante: float = 100.0, latence: float = 1.0):
         self.eq1 = eq1
