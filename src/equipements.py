@@ -5,8 +5,8 @@ import re
 class Equipement(ABC):
 
     def __init__(self, nom: str, ip: str, marque: str, statut: bool = True):
-        self.nom    = nom
-        self.ip     = self._valider_ip(ip)
+        self.nom = nom
+        self.ip = self._valider_ip(ip)
         self.marque = marque
         self.statut = statut
 
@@ -34,12 +34,12 @@ class Equipement(ABC):
 
     def activer(self):
         self.statut = True
-        print(f"✔  {self.nom} activé.")
+        print(f"{self.nom} activé.")
 
     def desactiver(self):
         """Désactive l'équipement."""
         self.statut = False
-        print(f"✘  {self.nom} désactivé.")
+        print(f"{self.nom} désactivé.")
 
 class Routeur(Equipement):
 

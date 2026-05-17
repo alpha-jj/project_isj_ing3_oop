@@ -1,24 +1,21 @@
 
 from collections import deque
 
-
-
 class Lien:
-    """
     Représente un lien physique entre deux équipements.
 
     Attributs :
-        eq1            : premier équipement (objet Equipement)
-        eq2            : deuxième équipement (objet Equipement)
+        eq1 : premier équipement (objet Equipement)
+        eq2 : deuxième équipement (objet Equipement)
         bande_passante : capacité en Mbps
-        latence        : délai en ms
+        latence : délai en ms
     """
 
     def __init__(self, eq1, eq2, bande_passante: float = 100.0, latence: float = 1.0):
-        self.eq1             = eq1
-        self.eq2             = eq2
+        self.eq1 = eq1
+        self.eq2 = eq2
         self.bande_passante  = bande_passante
-        self.latence         = latence
+        self.latence = latence
         self.octets_transmis = 0
 
     def utilisation(self) -> float:
@@ -35,11 +32,9 @@ class Lien:
         return f"Lien({self.eq1.nom!r}, {self.eq2.nom!r})"
 
 class Topologie:
-
-
     def __init__(self):
         self.equipements: list = []
-        self.liens: list       = [] 
+        self.liens: list = [] 
 
 
     def ajouter_equipement(self, eq):
@@ -77,10 +72,10 @@ class Topologie:
         eq1 = self.get_equipement_par_nom(nom_eq1)
         eq2 = self.get_equipement_par_nom(nom_eq2)
         if eq1 is None:
-            print(f"  Équipement '{nom_eq1}' introuvable.")
+            print(f"Équipement '{nom_eq1}' introuvable.")
             return
         if eq2 is None:
-            print(f"  Équipement '{nom_eq2}' introuvable.")
+            print(f"Équipement '{nom_eq2}' introuvable.")
             return
         lien = Lien(eq1, eq2, bande_passante, latence)
         self.liens.append(lien)
@@ -90,7 +85,7 @@ class Topologie:
         for lien in self.liens:
             if ({lien.eq1.nom, lien.eq2.nom} == {nom_eq1, nom_eq2}):
                 self.liens.remove(lien)
-                print(f" Lien supprimé entre {nom_eq1} et {nom_eq2}.")
+                print(f"Lien supprimé entre {nom_eq1} et {nom_eq2}.")
                 return
         print(f"  Lien introuvable entre {nom_eq1} et {nom_eq2}.")
 
@@ -111,19 +106,19 @@ class Topologie:
 
     def afficher(self):
         print("\n" + "=" * 55)
-        print("          TOPOLOGIE DU RÉSEAU — SIMNet")
+        print("TOPOLOGIE DU RÉSEAU — SIMNet")
         print("=" * 55)
 
-        print(f"\n  ÉQUIPEMENTS ({len(self.equipements)}) :")
+        print(f"\nÉQUIPEMENTS ({len(self.equipements)}) :")
         if not self.equipements:
             print("    (aucun équipement)")
         for eq in self.equipements:
-            print(f"    • {eq}")
+            print(f"• {eq}")
 
         print(f"\n  LIENS ({len(self.liens)}) :")
         if not self.liens:
-            print("    (aucun lien)")
+            print(" (aucun lien)")
         for lien in self.liens:
-            print(f"    ─ {lien}")
+            print(f"─ {lien}")
 
         print("=" * 55)
