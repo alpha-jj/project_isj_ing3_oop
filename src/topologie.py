@@ -34,8 +34,6 @@ class Lien:
     def __repr__(self) -> str:
         return f"Lien({self.eq1.nom!r}, {self.eq2.nom!r})"
 
-
-
 class Topologie:
 
 
