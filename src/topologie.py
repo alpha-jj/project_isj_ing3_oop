@@ -1,7 +1,7 @@
-
 from collections import deque
 
 class Lien:
+    """
     Représente un lien physique entre deux équipements.
 
     Attributs :
@@ -9,6 +9,7 @@ class Lien:
         eq2 : deuxième équipement (objet Equipement)
         bande_passante : capacité en Mbps
         latence : délai en ms
+    """
 
     def __init__(self, eq1, eq2, bande_passante: float = 100.0, latence: float = 1.0):
         self.eq1 = eq1
@@ -35,7 +36,6 @@ class Topologie:
         self.equipements: list = []
         self.liens: list = [] 
 
-
     def ajouter_equipement(self, eq):
         for e in self.equipements:
             if e.ip == eq.ip:
@@ -44,7 +44,6 @@ class Topologie:
         print(f"Équipement ajouté : {eq}")
 
     def supprimer_equipement(self, nom: str):
-
         eq = self.get_equipement_par_nom(nom)
         if eq is None:
             print(f"  Équipement '{nom}' introuvable.")
@@ -94,7 +93,8 @@ class Topologie:
                 return lien
         return None
 
-    def voisins(self, eq) -> list:""
+    def voisins(self, eq) -> list:
+        """Retourne la liste des voisins actifs de l'équipement donné."""
         voisins = []
         for lien in self.liens:
             if lien.eq1 == eq and lien.eq2.statut:
