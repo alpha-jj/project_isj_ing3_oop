@@ -139,3 +139,5 @@ dépôt officiel `st9-8/project_isj_ing3_oop`.
 **M. Stephane Fedim**  
 Institut Saint Jean - Parcours Ingénieur
 Année académique 2025-2026 · Semestre 2
+git status
+
