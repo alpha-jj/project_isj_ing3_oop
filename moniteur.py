@@ -1,7 +1,6 @@
 """
 moniteur.py
-
-Surveillance du réseau et génération de rapports d'exploitation.
+Surveillance du réseau et génération de rapports .
 
 Classes :
     Moniteur — collecte les statistiques et génère rapport_simnet.txt
@@ -12,27 +11,17 @@ from datetime import datetime
 
 
 class Moniteur:
-    """
-    Moniteur réseau de SIMNet.
-
-    Collecte en temps réel :
-        - paquets transmis / perdus par équipement
-        - taux d'utilisation de chaque lien
-        - liste des équipements actifs et inactifs
-        - historique des 10 derniers paquets (deque à taille fixe)
-
-    Génère à la demande un rapport d'exploitation (rapport_simnet.txt).
-    """
+    
 
     def __init__(self, topologie, simulateur):
         self.topologie       = topologie
         self.simulateur      = simulateur
-        # deque(maxlen=10) : garde automatiquement les 10 dernières entrées
+        # deque(maxlen=10)  garde automatiquement les 10 dernières entrées
         self.historique      = deque(maxlen=10)
         # stats par équipement : {nom: {"envoyes": 0, "perdus": 0}}
         self.stats_par_eq: dict = {}
 
-    # ── Enregistrement ────────────────────────────────────────────────────────
+    # ── Enregistrement 
 
     def enregistrer_paquet(self, paquet, chemin: list, succes: bool):
         """
@@ -57,10 +46,9 @@ class Moniteur:
             else:
                 self.stats_par_eq[eq.nom]["perdus"]  += 1
 
-    # ── Affichage console ─────────────────────────────────────────────────────
-
+    # ── Affichage console 
     def afficher_stats(self):
-        """Affiche un tableau de bord complet dans le terminal."""
+      
         print("\n" + "=" * 55)
         print("       TABLEAU DE BORD — Moniteur SIMNet")
         print("=" * 55)
@@ -108,7 +96,7 @@ class Moniteur:
 
         print("=" * 55)
 
-    # ── Génération du rapport ────────────────────────────────────────────────
+    # ── Génération du rapport 
 
     def generer_rapport(self, nom_fichier: str = "rapport_simnet.txt"):
         """
